@@ -1,0 +1,114 @@
+// Jonathan Morgan
+// Saving Lives
+#include <string>
+#include <cstdlib>
+#include <cctype>
+#include <iostream>
+
+using namespace std;
+
+// Function removeSpace removes all space characters from
+// string s. The transformed string is returned to the calling function.
+string removeSpace(string s);
+int getNum (string s);
+string makeString(int n);
+string reverse(string str);
+
+int main()
+{
+    int num1, num2, n, tests, sum;
+    string uno, dos, fin;
+    
+    cin >> tests;
+    getline(std::cin, uno);
+    
+    for (int count = 0; count < tests; ++count)
+    {
+        getline(std::cin, uno);
+        
+        getline(std::cin, dos);
+        
+        uno = removeSpace(uno);
+        num1 = getNum(uno);
+        
+        dos = removeSpace(dos);
+        num2 = getNum(dos);
+        
+        sum = num1 + num2;
+        
+        fin = makeString(sum);
+        fin = reverse(fin);
+        
+        cout << fin << endl;
+    }
+    
+    return 0;
+}
+
+
+// Function removeSpace removes all space characters from
+// string s. The transformed string is returned to the calling function.
+string removeSpace(string s)
+{
+    string::iterator itr;
+
+    for (itr = s.begin(); itr < s.end(); ++itr)
+    {
+        if(isspace(*itr))
+            s.erase(itr);
+    }
+    return s;
+}
+
+int getNum(string str)
+{
+    string::iterator itr;
+    int num, n;
+    num = 0;
+    n = 0;
+    char a;
+    
+    
+    for (itr = str.begin(); itr < str.end(); ++itr)
+    {
+        
+        a = *itr;
+                
+        n = static_cast<int>(*itr-48);
+        
+        num = num * 10;
+        num = num + n;
+         n = 0;
+    }
+    
+    return num;
+}
+
+string makeString(int n)
+{
+    string sum;
+    int a;
+    char tem;
+    
+    while (n > 0)
+    {
+        a = n % 10;
+        n = n / 10;
+        tem = static_cast<char>(a + 48);
+        sum = sum + tem;
+        sum = sum + ' ';
+    }
+    
+    return sum;
+}
+
+string reverse(string str)
+{
+    string::iterator itr;
+    string temp;
+    
+    for (itr = str.end() - 2; itr >= str.begin(); --itr)
+        temp = temp + *itr;
+    
+    return temp;
+}
