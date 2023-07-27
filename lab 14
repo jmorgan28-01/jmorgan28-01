@@ -1,0 +1,41 @@
+// Jonathan Morgan
+// CS 1337
+// Lab 14
+
+#include <iostream>
+#include <string> 
+#include <iomanip>
+
+using namespace std;
+
+const string ID = "Jonathan Morgan - CS 1337 - Lab 14 \n\n";
+
+int main() 
+{
+    int ssn;
+    
+    //output ID
+    cout << ID;
+
+    cout << setfill ('-') << setw(23) << '-' << setfill(' ') << endl;
+    cout << "  Input      Formatted" << endl;
+    cout << setfill ('-') << setw(23) << '-' << setfill(' ') << endl;
+
+    //read an unknown # of ints from standard input, letting
+    // each represent a 9 digit SSN
+    while (cin >> ssn)
+	{
+        int area = 0;
+        int group = 0;
+        int serial = 0;
+
+        cout << ssn  << setfill(' ') << setw(4);
+        area = ssn / 1000000;
+        group = group * 100 + (ssn / 100000 % 10 * 10) + (ssn / 10000 % 10) ;
+        serial = ssn % 10000;
+        cout << area << "-" << group << "-" << serial << endl;
+    }
+	
+			
+		return 0;
+}
