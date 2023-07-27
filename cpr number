@@ -1,0 +1,113 @@
+// Jonathan Morgan
+// CPR #
+
+#include <string>
+#include <cstdlib>
+#include <cctype>
+#include <iostream>
+
+using namespace std;
+
+long long getNum(string str);
+string removePunctuation(string s);
+int sep(long long cp);//seperates cpr #'s
+
+int main()
+{
+    string num;
+    int sum;
+    long long cpr;
+    getline(cin, num);
+    int a, b, c, d, e, f, g, h, i, j;
+    sum = 0;
+    
+    num = removePunctuation(num);
+    cpr = getNum(num);
+    
+    
+    j = sep(cpr);
+    cpr = cpr / 10;
+    
+    i = sep(cpr);
+    cpr = cpr / 10;
+    
+    h = sep(cpr);
+    cpr = cpr / 10;
+    
+    g = sep(cpr);
+    cpr = cpr / 10;
+    
+    f = sep(cpr);
+    cpr = cpr / 10;
+    
+    e = sep(cpr);
+    cpr = cpr / 10;
+    
+    d = sep(cpr);
+    cpr = cpr / 10;
+    
+    c = sep(cpr);
+    cpr = cpr / 10;
+    
+    b = sep(cpr);
+    cpr = cpr / 10;
+    
+    a = sep(cpr);
+    cpr = cpr / 10;
+    
+    sum = a * 4 + b * 3 + c * 2 + d * 7 + e * 6 + f * 5 + g * 4 + h * 3 + i * 2 + j * 1;
+
+    if (sum % 11 == 0)
+        cout << "1" << endl;
+    else
+        cout << "0" << endl;
+    
+    return 0;
+}
+    
+
+string removePunctuation(string s)
+{
+    string::iterator itr;
+
+    for (itr = s.begin(); itr < s.end(); ++itr)
+    {
+        if(ispunct(*itr))
+            s.erase(itr);
+    }
+    return s;
+}
+
+long long getNum(string str)
+{
+    string::iterator itr;
+    int n;
+    long long num;
+    num = 0;
+    n = 0;
+    char a;
+    
+    
+    for (itr = str.begin(); itr < str.end(); ++itr)
+    {
+        
+        a = *itr;
+                
+        n = static_cast<int>(*itr-48);
+        
+        num = num * 10;
+        num = num + n;
+         n = 0;
+    }
+    
+    return num;
+}
+
+int sep(long long cp)
+{
+    int num;
+    
+    num = cp % 10;
+    
+    return num;
+}
