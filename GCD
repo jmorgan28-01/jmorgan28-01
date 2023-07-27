@@ -1,0 +1,46 @@
+//Jonathan Morgan
+// GCD
+
+#include <cmath>
+#include <algorithm>
+#include <cstdlib>
+#include <cctype>
+#include <iostream>
+
+using namespace std;
+
+int getGCD(int u, int v);
+
+int main()
+{
+    int num1, num2;
+    int gcd;
+    
+    cin >> num1 >> num2;
+    
+    gcd = getGCD(num1, num2);
+    
+    cout << gcd << endl;
+
+    return 0;
+}
+
+int getGCD(int u, int v)
+{
+    if (u == 0)
+        return abs(v);
+    else if (v == 0)
+        return abs(u);
+    else
+    {
+        u = abs(u);
+        v = abs(v);
+        int myGcd = min(u,v);
+        
+        while ( u % myGcd != 0 || v % myGcd != 0)
+        {
+        --myGcd;
+        }
+        return myGcd;
+    }
+}
